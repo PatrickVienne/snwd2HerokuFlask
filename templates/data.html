@@ -1,0 +1,14 @@
+{% extends "frame.html" %}
+
+{% block title %}
+    Data Page
+{% endblock title %}
+
+{% block imports %}
+    <link rel=stylesheet type=text/css href="{{ url_for('static', filename='data.css') }}">
+{% endblock imports %}
+
+{% block content %}
+    <h1>Data Page</h1>
+    {{data|tojson}}
+{% endblock content %}

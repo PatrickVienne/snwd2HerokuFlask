@@ -1,0 +1,13 @@
+{% extends "frame.html" %}
+
+{% block title %}
+    Timer Page
+{% endblock title %}
+
+{% block imports %}
+    <script type="text/javascript" src="{{ url_for('static', filename='timer.js') }}"> </script>
+{% endblock imports %}
+
+{% block content %}
+    <h1 id="time">Loading...</h1>
+{% endblock content %}
