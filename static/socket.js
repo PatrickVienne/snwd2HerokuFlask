@@ -1,6 +1,6 @@
 // Client Side Javascript to receive numbers.
 
-var socket = io.connect('ws://' + document.domain + ':' + location.port + '/test');
+var socket = io.connect('wss://' + document.domain + ':' + location.port + '/test');
 var logElement = document.getElementById("log");
 var inputElement = document.getElementById("message");
 var nameElement = document.getElementById("name");
