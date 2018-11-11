@@ -3,6 +3,8 @@
 Weitere Infos und ein ähnliches Beispiel unter:
 https://www.tutorialspoint.com/flask/flask_sqlalchemy.htm
 """
+import os
+
 import flask_socketio
 import sqlalchemy
 from flask import Flask, request, flash, url_for, redirect, render_template
@@ -10,7 +12,8 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 # turn the flask app into a socketio app
-socketio = flask_socketio.SocketIO(app)
+async_mode = None
+socketio = flask_socketio.SocketIO(app, async_mode=async_mode, engineio_logger=True, logger=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
 app.config['SECRET_KEY'] = "random string"
 
@@ -87,4 +90,4 @@ def userspost():
 
 if __name__ == '__main__':
     db.create_all()
-    app.run(debug=True, host="0.0.0.0")
+    socketio.run(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8000)), debug=True)
